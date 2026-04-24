@@ -4,7 +4,9 @@ import '../../infra/model/episode.dart';
 import '../../infra/model/rick_and_morty_characters.dart';
 
 class Service implements RemoteDatasource {
-  final dio = Dio();
+  final Dio dio;
+
+  Service({Dio? dio}) : dio = dio ?? Dio();
 
   @override
   Future<Episode> fetchEpisode(String episode) async {

@@ -1,3 +1,4 @@
+// coverage:ignore-file
 import '../../domain/entities/episode_entity.dart';
 
 class Episode extends EpisodeEntity {

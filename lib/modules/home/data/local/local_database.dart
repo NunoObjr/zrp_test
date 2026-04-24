@@ -9,10 +9,16 @@ import '../../infra/model/rick_and_morty_characters.dart';
 class LocalDatabase implements LocalDatasource {
   static final LocalDatabase _instance = LocalDatabase._internal();
   static Database? _database;
+  static String dbName = 'episodes.db';
 
   factory LocalDatabase() => _instance;
 
   LocalDatabase._internal();
+
+  @visibleForTesting
+  static void setDatabase(Database? db) {
+    _database = db;
+  }
 
   Future<Database> get database async {
     if (_database != null) return _database!;
@@ -22,7 +28,7 @@ class LocalDatabase implements LocalDatasource {
 
   Future<Database> _initDatabase() async {
     final dbPath = await getDatabasesPath();
-    final path = join(dbPath, 'episodes.db');
+    final path = join(dbPath, dbName);
 
     return await openDatabase(
       path,
