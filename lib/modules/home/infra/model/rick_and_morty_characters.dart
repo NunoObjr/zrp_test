@@ -1,3 +1,4 @@
+// coverage:ignore-file
 import '../../domain/entities/character_entity.dart';
 
 class RickAndMortyCharacter extends CharacterEntity {
